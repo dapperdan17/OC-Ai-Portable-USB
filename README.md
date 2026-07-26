@@ -64,7 +64,13 @@ When you launch `OpenCode AI.exe` for the first time, a popup appears:
 3. **Paste your API key** in the input box
 4. **Click OK** to save and launch OpenCode
 
-The popup only appears once. Your API key is saved to the USB drive and protected:
+**Recommended:** [OpenCode Zen](https://opencode.ai/auth) -- built-in, free tier
+available, and the simplest option to get started.
+
+The USB can be created offline (no internet needed to build the stick), but
+**using OpenCode requires an API key and an internet connection** to talk to
+the AI provider. The popup only appears once. Your API key is saved to the
+USB drive and protected:
 - Config file is set to **read-only** to prevent accidental deletion
 - A **hidden backup** is created automatically
 - If the config is deleted, the key is **restored from backup** on next launch
