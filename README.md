@@ -129,10 +129,28 @@ Googling things manually. Then I started using AI to *build* instead of
 just *ask*. I'd describe what I wanted, and the AI would explain things in
 a way that made sense -- not dumbing it down, just meeting me where I am.
 
-Every feature in here -- the popup, the key protection, the auto-restore --
-came from me saying "what if it did this?" and the AI saying "here's how."
-AI wrote most of the code. I directed it, tested it, and asked it to fix
-it when it broke.
+It hasn't been smooth. I've had plenty of bad moments. I'd get the app
+somewhere close to working, then break it through my own doing because I
+didn't educate myself enough on how to use the tools. I'd say "allow"
+when the model was about to delete something and not read the prompt
+properly. I tried so many different models before finding one that
+actually worked for what I needed.
+
+I started with ChatGPT in the browser -- two months of copy and paste
+escapades before I even realised I could ask it to generate files and
+download them. I learned about Python, terminal commands, and a lot more
+just by messing things up and having to fix them. YouTube, Google, asking
+AI itself how to use AI -- that's been the loop.
+
+When I found OpenCode and started using AI in a terminal window, that was
+the real step forward. Not because it was easier -- I still messed up
+plenty. But it felt like actually *using* the tool instead of just
+talking to it.
+
+Every feature in here -- the popup, the key protection, the auto-restore
+-- came from me saying "what if it did this?" and the AI saying "here's
+how." AI wrote most of the code. I directed it, tested it, and asked it
+to fix it when it broke. And it broke a lot.
 
 I have another app I've been working on for a year and a half. I keep
 pottering with it, making mistakes, over-wording things, asking too much
@@ -147,7 +165,8 @@ enough.
 to become engineers understand things I never will. But AI gives people
 with ideas a way to *execute* those ideas. It turns "what if" into
 "here's how." And if you have curiosity, patience, and something you want
-to build -- that's enough to start.
+to build -- that's enough to start. Just be prepared to break things a
+lot along the way.
 
 ### Who this is for
 
