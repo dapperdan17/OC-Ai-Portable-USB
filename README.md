@@ -110,63 +110,29 @@ or running scripts with prerequisites. This project is different:
 
 ---
 
-## Why this exists
+### Why this exists
 
-I'm not a coder. I have no qualifications in programming. I don't fully
-understand every line of code in this project.
+I'm not a coder. I have no qualifications. I have ideas and, apparently,
+enough patience to not give up -- don't tell anyone.
 
-What I do have is ideas, imagination, and the patience to ask questions.
+I tried other portable AI USB installers and none worked for me. I'd get
+stuck, give up, and go back to Googling. Then I started using AI to
+*build* instead of just *ask*.
 
-A coder understands *why* that code is there, *where* to put it, and *how*
-to make it work together. I don't have that. What I have is the vision: I
-know what I want the thing to *do*. I can describe it, test it, break it,
-and say "that's not right, what if it worked like this instead?" AI takes
-that and turns it into code.
+It hasn't been smooth. I broke things constantly because I didn't
+understand the tools. I'd say "allow" when the model was about to delete
+something. I started with ChatGPT copy and paste for two months before I
+even realised I could ask it to generate files. I learned by messing
+things up and fixing them -- YouTube, Google, asking AI itself how to use
+AI.
 
-This project started because I tried other portable AI USB installers and
-none of them worked for me. I'd get stuck, give up, and go back to
-Googling things manually. Then I started using AI to *build* instead of
-just *ask*. I'd describe what I wanted, and the AI would explain things in
-a way that made sense -- not dumbing it down, just meeting me where I am.
+When I found OpenCode and started using AI in a terminal, that was the
+real step forward. Every feature here came from me saying "what if it did
+this?" and the AI saying "here's how." It broke a lot along the way.
 
-It hasn't been smooth. I've had plenty of bad moments. I'd get the app
-somewhere close to working, then break it through my own doing because I
-didn't educate myself enough on how to use the tools. I'd say "allow"
-when the model was about to delete something and not read the prompt
-properly. I tried so many different models before finding one that
-actually worked for what I needed.
-
-I started with ChatGPT in the browser -- two months of copy and paste
-escapades before I even realised I could ask it to generate files and
-download them. I learned about Python, terminal commands, and a lot more
-just by messing things up and having to fix them. YouTube, Google, asking
-AI itself how to use AI -- that's been the loop.
-
-When I found OpenCode and started using AI in a terminal window, that was
-the real step forward. Not because it was easier -- I still messed up
-plenty. But it felt like actually *using* the tool instead of just
-talking to it.
-
-Every feature in here -- the popup, the key protection, the auto-restore
--- came from me saying "what if it did this?" and the AI saying "here's
-how." AI wrote most of the code. I directed it, tested it, and asked it
-to fix it when it broke. And it broke a lot.
-
-I have another app I've been working on for a year and a half. I keep
-pottering with it, making mistakes, over-wording things, asking too much
-in one go. I dream it could be the road to working for myself. It may
-work. It does work. But I don't fully understand the topic it's built
-for -- I just want to learn, and I want to make it usable for everybody,
-even people with no knowledge of that area. If it gets even a few more
-people interested in something they didn't know about before, that's
-enough.
-
-**AI doesn't replace the skill of coding.** People who studied for years
-to become engineers understand things I never will. But AI gives people
-with ideas a way to *execute* those ideas. It turns "what if" into
-"here's how." And if you have curiosity, patience, and something you want
-to build -- that's enough to start. Just be prepared to break things a
-lot along the way.
+**AI doesn't replace the skill of coding.** But it gives people with
+ideas a way to execute them. If you have curiosity and something you want
+to build, that's enough to start.
 
 ### Who this is for
 
