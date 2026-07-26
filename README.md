@@ -128,7 +128,10 @@ AI.
 
 When I found OpenCode and started using AI in a terminal, that was the
 real step forward. Every feature here came from me saying "what if it did
-this?" and the AI saying "here's how." It broke a lot along the way.
+this?" and the AI saying "here's how." Sometimes I had to push back --
+some models flat out said things couldn't be done because of
+restrictions, but a different model or a different approach found a way.
+It broke a lot along the way, but we got there.
 
 **AI doesn't replace the skill of coding.** But it gives people with
 ideas a way to execute them. If you have curiosity and something you want
