@@ -1,0 +1,53 @@
+MIT License
+
+Copyright (c) 2026 the OpenCode AI Portable USB Creator authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+THIRD-PARTY SOFTWARE
+================================================================================
+
+The MIT license above covers ONLY this project's own code (the USB creator and
+the launcher). The distributed installer .exe bundles and redistributes the
+following third-party software, each governed by its own license. These binaries
+are not included in this source repository; they are obtained from their official
+sources and embedded at build time.
+
+  OpenCode
+    Terminal AI coding agent.
+    https://opencode.ai  --  see project for license terms.
+
+  Node.js
+    JavaScript runtime. MIT License (plus bundled dependencies under their own
+    licenses, incl. V8, libuv, OpenSSL).
+    https://nodejs.org
+
+  WezTerm
+    GPU-accelerated terminal emulator. MIT License.
+    Copyright (c) Wez Furlong.
+    https://wezterm.org
+
+  ripgrep
+    Fast recursive search tool. Dual-licensed MIT / Unlicense.
+    Copyright (c) Andrew Gallant.
+    https://github.com/BurntSushi/ripgrep
+
+When redistributing the built installer, retain the respective license notices
+of the bundled components.
