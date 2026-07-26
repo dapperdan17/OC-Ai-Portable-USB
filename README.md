@@ -110,6 +110,48 @@ or running scripts with prerequisites. This project is different:
 
 ---
 
+## Why this exists
+
+I'm not a computer genius. I have no coding qualifications. But I'm not a complete
+noob either -- I know my way around a PC, and I have ideas.
+
+I wanted a portable AI coding assistant I could plug into any machine at work or
+anywhere else. I tried other USB installers. Some had batch files, some had
+instructions I half-understood, and none of them ever quite worked for me. I'd
+get stuck halfway through, give up, and go back to Googling things manually.
+
+Then I started using AI differently. Not just to ask questions -- but to *build*
+things. I'd describe what I wanted, and the AI would explain it in a way that
+made sense. Not dumbing it down, just meeting me where I am. I started
+questioning the code it generated, asking *why* things worked a certain way, and
+slowly the explanations started to click.
+
+This USB creator is the result of that process. AI wrote most of the code. I
+directed it, tested it, broke it, and asked it to fix it. Every feature in here
+-- the popup, the key protection, the auto-restore -- came from me saying "what
+if it did this?" and the AI saying "here's how."
+
+It's given me the confidence to try building other things: apps, websites,
+tools for working out finances. I still question everything. I still don't
+understand every line of code. But I understand *what the code does* and *why
+it's there*, and that's enough to keep building.
+
+**If you've ever felt locked out of coding because you don't have a degree or
+formal training -- this project is proof that you don't need one.** You need
+curiosity, patience, and an AI that's willing to explain things when you ask.
+
+### Who this is for
+
+- **Engineers and designers** who want AI assistance on site without installing
+  software on client machines
+- **Office workers** on locked-down corporate PCs where you can't install anything
+- **People on the road** who work from different computers and want their
+  environment to travel with them
+- **Anyone helping others** who aren't computer-savvy -- hand them the USB, they
+  double-click, it works
+
+---
+
 ## Building it yourself
 
 The [`src/`](src/) folder contains the full source:
