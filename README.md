@@ -219,6 +219,7 @@ This project's own code (the installer and launcher) is released under the
 [MIT License](LICENSE).
 
 It bundles and redistributes third-party software, each under its own license --
-OpenCode, Node.js, WezTerm and ripgrep. Those binaries are **not** in this repository;
-they're downloaded from their official sources at build time and embedded into the
-released `.exe`. See [LICENSE](LICENSE) for attribution and links.
+OpenCode, Node.js, WezTerm and ripgrep. Those binaries were downloaded from their
+official sources when the .exe was built, then embedded into it. You don't need
+internet to create the USB -- everything is already inside the .exe. See
+[LICENSE](LICENSE) for attribution and links.
