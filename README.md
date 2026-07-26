@@ -3,9 +3,13 @@
 
 # OpenCode AI - Portable USB Creator
 
-Turn any USB stick into a **self-contained AI coding assistant** that runs on any
+Turn any USB 3.0 stick (16GB+) into a **self-contained AI coding assistant** that runs on any
 Windows 10/11 PC. No installation. No admin rights on the target machine. Nothing
 left behind on the computer you plug it into.
+
+> **USB 2.0 works but is slow.** USB 3.0 (blue port) is recommended -- OpenCode and
+> WezTerm load noticeably faster. Avoid cheap no-name sticks if you can; they tend
+> to fail mid-write and corrupt the drive.
 
 `Ai Portable USB creator.exe` partitions and formats a USB stick, then unpacks a fully
 portable copy of [OpenCode](https://opencode.ai) -- a terminal AI coding agent --
