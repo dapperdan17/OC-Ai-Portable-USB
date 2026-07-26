@@ -112,43 +112,53 @@ or running scripts with prerequisites. This project is different:
 
 ## Why this exists
 
-I'm not a computer genius. I have no coding qualifications. But I'm not a complete
-noob either -- I know my way around a PC, and I have ideas.
+I'm not a coder. I have no qualifications in programming. I don't fully
+understand every line of code in this project.
 
-I wanted a portable AI coding assistant I could plug into any machine at work or
-anywhere else. I tried other USB installers. Some had batch files, some had
-instructions I half-understood, and none of them ever quite worked for me. I'd
-get stuck halfway through, give up, and go back to Googling things manually.
+What I do have is ideas, imagination, and the patience to ask questions.
 
-Then I started using AI differently. Not just to ask questions -- but to *build*
-things. I'd describe what I wanted, and the AI would explain it in a way that
-made sense. Not dumbing it down, just meeting me where I am. I started
-questioning the code it generated, asking *why* things worked a certain way, and
-slowly the explanations started to click.
+A coder understands *why* that code is there, *where* to put it, and *how*
+to make it work together. I don't have that. What I have is the vision: I
+know what I want the thing to *do*. I can describe it, test it, break it,
+and say "that's not right, what if it worked like this instead?" AI takes
+that and turns it into code.
 
-This USB creator is the result of that process. AI wrote most of the code. I
-directed it, tested it, broke it, and asked it to fix it. Every feature in here
--- the popup, the key protection, the auto-restore -- came from me saying "what
-if it did this?" and the AI saying "here's how."
+This project started because I tried other portable AI USB installers and
+none of them worked for me. I'd get stuck, give up, and go back to
+Googling things manually. Then I started using AI to *build* instead of
+just *ask*. I'd describe what I wanted, and the AI would explain things in
+a way that made sense -- not dumbing it down, just meeting me where I am.
 
-It's given me the confidence to try building other things: apps, websites,
-tools for working out finances. I still question everything. I still don't
-understand every line of code. But I understand *what the code does* and *why
-it's there*, and that's enough to keep building.
+Every feature in here -- the popup, the key protection, the auto-restore --
+came from me saying "what if it did this?" and the AI saying "here's how."
+AI wrote most of the code. I directed it, tested it, and asked it to fix
+it when it broke.
 
-**If you've ever felt locked out of coding because you don't have a degree or
-formal training -- this project is proof that you don't need one.** You need
-curiosity, patience, and an AI that's willing to explain things when you ask.
+I have another app I've been working on for a year and a half. I keep
+pottering with it, making mistakes, over-wording things, asking too much
+in one go. I dream it could be the road to working for myself. It may
+work. It does work. But I don't fully understand the topic it's built
+for -- I just want to learn, and I want to make it usable for everybody,
+even people with no knowledge of that area. If it gets even a few more
+people interested in something they didn't know about before, that's
+enough.
+
+**AI doesn't replace the skill of coding.** People who studied for years
+to become engineers understand things I never will. But AI gives people
+with ideas a way to *execute* those ideas. It turns "what if" into
+"here's how." And if you have curiosity, patience, and something you want
+to build -- that's enough to start.
 
 ### Who this is for
 
-- **Engineers and designers** who want AI assistance on site without installing
-  software on client machines
-- **Office workers** on locked-down corporate PCs where you can't install anything
+- **Engineers and designers** who want AI assistance on site without
+  installing software on client machines
+- **Office workers** on locked-down corporate PCs where you can't install
+  anything
 - **People on the road** who work from different computers and want their
   environment to travel with them
-- **Anyone helping others** who aren't computer-savvy -- hand them the USB, they
-  double-click, it works
+- **Anyone helping others** who aren't computer-savvy -- hand them the
+  USB, they double-click, it works
 
 ---
 
