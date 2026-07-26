@@ -22,12 +22,18 @@ until your first API call.
 
 1. Download **`Ai Portable USB creator.exe`** from the
    [Releases](../../releases) page.
-2. Right-click it > **Run as administrator** (it repartitions a drive, so it needs this).
+2. Right-click it > **Run as administrator**.
 3. Pick your USB stick, choose a partition style (**MBR** is the most compatible),
    and click through.
 4. When it finishes, eject the stick.
 5. Plug it into any Windows 10/11 PC, open it in File Explorer, and double-click
    **`OpenCode AI.exe`**.
+
+> **Why administrator?** The creator needs to partition and format your USB drive.
+> Windows reserves low-level disk operations (partition tables, file systems, volume
+> labels) for administrators. Without it, the tool can see your USB but cannot write
+> to it. This only applies to the machine that *creates* the stick -- the machines
+> that *run* OpenCode need no special permissions.
 
 > **First run:** Windows SmartScreen may warn about an unsigned app
 > ("Windows protected your PC"). Click **More info > Run anyway**. This is expected
