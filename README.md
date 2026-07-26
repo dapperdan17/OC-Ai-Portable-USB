@@ -191,9 +191,11 @@ If something goes wrong:
 
 1. **Run `Diagnose.bat`** on the USB drive -- it checks system compatibility and
    reports what's wrong
-2. **Check [existing issues](../../issues)** before creating a new one -- your
+2. **Review the diagnostic report** before sharing it -- it may contain file paths
+   or system details you'd rather keep private. Remove anything sensitive.
+3. **Check [existing issues](../../issues)** before creating a new one -- your
    problem may already have a fix
-3. **[Open a new issue](../../issues/new)** if nothing matches -- include the
+4. **[Open a new issue](../../issues/new)** if nothing matches -- include the
    diagnostic output and what you were doing when it broke
 
 ---
