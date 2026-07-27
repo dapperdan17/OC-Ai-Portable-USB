@@ -1,4 +1,4 @@
-<img width="1254" height="1254" alt="OpenCode AI Portable USB" src="https://raw.githubusercontent.com/dapperdan17/OC-Ai-Portable-USB/main/src/splash.png" />
+<img width="1254" height="1254" alt="OpenCode AI Portable USB" src="https://raw.githubusercontent.com/dapperdan17/OC-Ai-Portable-USB/main/assets/splash.png" />
 
 
 # OpenCode AI - Portable USB Creator

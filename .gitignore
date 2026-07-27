@@ -28,7 +28,7 @@ diagnostic-report.txt
 #  Too large for git; fetched from official sources at build time.
 # ══════════════════════════════════════════════════════════════
 backup/
-Portable-OpenCode-USB-Backup/
+backup/
 bin/
 nodejs/
 wezterm/
