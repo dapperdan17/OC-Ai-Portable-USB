@@ -11,7 +11,7 @@ left behind on the computer you plug it into.
 > WezTerm load noticeably faster. Avoid cheap no-name sticks if you can; they tend
 > to fail mid-write and corrupt the drive.
 
-`Ai Portable USB creator.exe` partitions and formats a USB stick, then unpacks a fully
+`Ai.Portable.USB.Creator.exe` partitions and formats a USB stick, then unpacks a fully
 portable copy of [OpenCode](https://opencode.ai) -- a terminal AI coding agent --
 together with its own bundled terminal (WezTerm) and JavaScript runtime (Node.js).
 Everything runs from the stick.
@@ -24,7 +24,7 @@ until your first API call.
 
 ## Download & use
 
-1. Download **`Ai Portable USB creator.exe`** from the
+1. Download **`Ai.Portable.USB.Creator.exe`** from the
    [Releases](../../releases) page.
 2. Right-click it > **Run as administrator**.
 3. Pick your USB stick, choose a partition style (**MBR** is the most compatible),
@@ -170,6 +170,8 @@ The [`src/`](src/) folder contains the full source:
 - `create-usb.ps1` -- legacy PowerShell-based creator (fallback)
 - `check-updates.ps1` -- the update-check script the installer writes onto the stick
 - icons and splash image
+
+Built executables go to `releases/` with version numbers (e.g. `releases/v1.1.0/`).
 
 Building also needs the **payload** -- the actual OpenCode, Node.js and WezTerm binaries
 that get embedded into the `.exe`. Those are large third-party downloads and are **not**
