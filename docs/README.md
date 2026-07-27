@@ -63,7 +63,7 @@ until your first API call.
 
 When you launch `OpenCode AI.exe` for the first time, a popup appears:
 
-1. **Select your AI provider** from the dropdown (OpenCode Zen, Anthropic, OpenAI, Google, or Other)
+1. **Select your AI provider** from the dropdown (OpenCode Zen, Anthropic, OpenAI, or Google)
 2. **Click the link** to sign up / get your API key (opens in your default browser)
 3. **Paste your API key** in the input box
 4. **Click OK** to save and launch OpenCode

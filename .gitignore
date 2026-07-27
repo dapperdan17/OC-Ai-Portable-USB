@@ -27,15 +27,21 @@ diagnostic-report.txt
 #  The payload — third-party binaries (OpenCode, Node.js, WezTerm).
 #  Too large for git; fetched from official sources at build time.
 # ══════════════════════════════════════════════════════════════
+backup/
 Portable-OpenCode-USB-Backup/
 bin/
 nodejs/
 wezterm/
 
 # ══════════════════════════════════════════════════════════════
+#  Build output — distributed as release assets
+# ══════════════════════════════════════════════════════════════
+releases/
+
+# ══════════════════════════════════════════════════════════════
 #  Build / OS noise
 # ══════════════════════════════════════════════════════════════
-create-usb.log
+logs/
 *.log
 *.tmp
 z*.tmp
