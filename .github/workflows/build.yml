@@ -16,6 +16,9 @@ env:
   NODE_VERSION: '24.21.0'
   RIPGREP_VERSION: '15.2.0'
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: windows-latest
@@ -104,3 +107,11 @@ jobs:
           name: usb-creator
           path: dist/*.exe
           compression-level: 0
+
+      - name: Draft release (tags only)
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NOTES: "Updated components: OpenCode 1.18.32 (baseline build, runs on older CPUs), Node.js 24.21.0 LTS, ripgrep 15.2.0, WezTerm nightly. About 40 MB smaller: duplicate binaries and debug symbols removed. Built reproducibly on GitHub Actions."
+        run: gh release create $env:GITHUB_REF_NAME dist/*.exe --draft --verify-tag --title $env:GITHUB_REF_NAME --notes $env:NOTES
