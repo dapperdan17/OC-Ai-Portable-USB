@@ -131,7 +131,7 @@ if (-not (Test-Path $splashFile)) {
 # Compile launcher.exe if needed
 if (-not (Test-Path $launcherExe)) {
     Write-Host "  Compiling launcher.exe..." -ForegroundColor Yellow
-    & "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe" -target:winexe -out:$launcherExe -win32icon:$icoFile $launcherCs
+    & "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe" -target:winexe "-out:$launcherExe" "-win32icon:$icoFile" $launcherCs
     if ($LASTEXITCODE -ne 0) {
         Write-Error "Launcher compilation failed"
         exit 1
@@ -144,11 +144,11 @@ if (-not (Test-Path $launcherExe)) {
     -reference:System.Windows.Forms.dll `
     -reference:System.IO.Compression.dll `
     -reference:System.IO.Compression.FileSystem.dll `
-    -resource:$zipPath,opencode-source.zip `
-    -resource:$launcherExe,launcher.exe `
-    -resource:$splashFile,splash.png `
-    -out:$outFile `
-    -win32icon:$icoFile `
+    "-resource:$zipPath,opencode-source.zip" `
+    "-resource:$launcherExe,launcher.exe" `
+    "-resource:$splashFile,splash.png" `
+    "-out:$outFile" `
+    "-win32icon:$icoFile" `
     $csFile
 
 if ($LASTEXITCODE -ne 0) {
