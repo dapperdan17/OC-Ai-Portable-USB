@@ -39,6 +39,15 @@ jobs:
             }
           }
 
+          # .sha256 files arrive as octet-stream and in varying formats (ripgrep's is
+          # CertUtil output), so read as text and take the first 64-hex token
+          function Get-Sha($url) {
+            Invoke-WebRequest $url -OutFile "$dl/sum.txt"
+            $m = [regex]::Match((Get-Content "$dl/sum.txt" -Raw), '\b[0-9a-fA-F]{64}\b')
+            if (-not $m.Success) { throw "No SHA256 found in $url" }
+            $m.Value
+          }
+
           Copy-Item payload $P -Recurse
           Copy-Item docs/USB-README.txt (Join-Path $P 'README.txt')
           # git doesn't track empty dirs; the stick layout expects these
@@ -63,14 +72,14 @@ jobs:
           # ripgrep
           $rg = "ripgrep-$env:RIPGREP_VERSION-x86_64-pc-windows-msvc"
           $rgBase = "https://github.com/BurntSushi/ripgrep/releases/download/$env:RIPGREP_VERSION"
-          $rgSha = ((Invoke-WebRequest "$rgBase/$rg.zip.sha256").Content -split '\s+')[0]
+          $rgSha = Get-Sha "$rgBase/$rg.zip.sha256"
           Get-File "$rgBase/$rg.zip" "$dl/rg.zip" $rgSha
           Expand-Archive "$dl/rg.zip" $dl
           Copy-Item "$dl/$rg/rg.exe" "$P/bin/rg.exe"
 
           # WezTerm - upstream only publishes nightly builds now
           $wzBase = 'https://github.com/wezterm/wezterm/releases/download/nightly'
-          $wzSha = ((Invoke-WebRequest "$wzBase/WezTerm-windows-nightly.zip.sha256").Content -split '\s+')[0]
+          $wzSha = Get-Sha "$wzBase/WezTerm-windows-nightly.zip.sha256"
           Get-File "$wzBase/WezTerm-windows-nightly.zip" "$dl/wz.zip" $wzSha
           Expand-Archive "$dl/wz.zip" "$dl/wz"
           $wzDir = (Get-ChildItem "$dl/wz" -Recurse -Filter wezterm-gui.exe | Select-Object -First 1).Directory.FullName
