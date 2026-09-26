@@ -50,9 +50,9 @@ until your first API call.
 
 | Component | Purpose |
 |-----------|---------|
-| **OpenCode** v1.18.3 | Terminal AI coding agent |
+| **OpenCode** v1.18.32 | Terminal AI coding agent |
 | **WezTerm** | GPU-accelerated portable terminal |
-| **Node.js** v26.5.0 | Bundled JavaScript runtime |
+| **Node.js** v24 LTS | Bundled JavaScript runtime |
 | **ripgrep** | Fast search (bundled, no download needed) |
 | **API key popup** | First-run provider selection with GUI |
 | **Key protection** | Read-only config + hidden backup + auto-restore |
@@ -177,13 +177,17 @@ Building also needs the **payload** -- the actual OpenCode, Node.js and WezTerm 
 that get embedded into the `.exe`. Those are large third-party downloads and are **not**
 included in this repository (see [Licenses](#licenses)). Grab them from:
 
-- OpenCode: <https://opencode.ai>
-- Node.js (Windows x64): <https://nodejs.org>
-- WezTerm: <https://wezterm.org>
-- ripgrep: <https://github.com/BurntSushi/ripgrep/releases>
+- OpenCode: <https://opencode.ai> (npm package `opencode-ai`, repo:
+  <https://github.com/anomalyco/opencode>)
+- Node.js (Windows x64, current LTS): <https://nodejs.org/en/download>
+- WezTerm: <https://wezterm.org> -- upstream has not cut a dated GitHub release since
+  early 2024, but the project is actively developed and ships continuously-updated
+  nightly builds instead; grab `WezTerm-windows-nightly.zip` from
+  <https://github.com/wez/wezterm/releases/tag/nightly>
+- ripgrep: <https://github.com/BurntSushi/ripgrep/releases> (currently v15.2.0)
 
 Arrange them into a folder matching the layout the installer expects
-(`bin\`, `nodejs\`, `wezterm\`, `config\`, `data\`), then run:
+(`bin\`, `nodejs\`, `wezterm\`, `config\`, `data\`), then from inside `src\` run:
 
 ```powershell
 .\build-embedded.ps1 -SourcePath "<payload folder>"

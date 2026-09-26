@@ -30,6 +30,7 @@ diagnostic-report.txt
 backup/
 backup/
 bin/
+!payload/bin/
 nodejs/
 wezterm/
 

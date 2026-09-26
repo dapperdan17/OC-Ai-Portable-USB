@@ -60,12 +60,12 @@ $excludeDirs = @('sessions','Sessions','System Volume Information','$RECYCLE.BIN
 # publish the builder's own API keys inside the installer. Never remove this.
 #
 $excludePaths = @('data/config/node_modules', 'data/xdg', 'data/tmp')
-[System.IO.Compression.ZipFile]::CreateFromDirectory($SourcePath, $zipPath, [System.IO.Compression.CompressionLevel]::Optimal, $false)
 
-# The CreateFromDirectory doesn't support exclusions, so we need to rebuild
-# Remove the ZIP and create a custom one
-Remove-Item $zipPath -Force
-
+# ZipFile.CreateFromDirectory has no exclusion support, so the zip is built
+# entry-by-entry below instead. (This used to call CreateFromDirectory on the
+# whole $SourcePath first and immediately discard the result - pointless
+# work, and it briefly wrote a zip containing the live API keys under
+# data/xdg to disk before deleting it. Don't bring that back.)
 $zip = [System.IO.Compression.ZipFile]::Open($zipPath, [System.IO.Compression.ZipArchiveMode]::Create)
 
 function Add-FilesToZip($zip, $sourceDir, $baseRelPath = "") {
@@ -104,16 +104,25 @@ Write-Host ""
 Write-Host "Compiling create-usb.exe with embedded source..." -ForegroundColor Yellow
 
 $csc = "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe"
-$csFile = Join-Path $OutputDir "create-usb.cs"
-$icoFile = Join-Path $OutputDir "assets\opencode-usb-creator.ico"
-$outFile = Join-Path $OutputDir "create-usb.exe"
 
+# This script lives in src\, and assets\ is a sibling of src\ at the repo root
+# (not inside src\) - resolve it from the script's own location, not $OutputDir,
+# so this still works when $OutputDir is overridden to point somewhere else.
 $launcherDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$repoRoot = Split-Path -Parent $launcherDir
 $launcherCs = Join-Path $launcherDir "launcher.cs"
 $launcherExe = Join-Path $launcherDir "launcher.exe"
 
+$csFile = Join-Path $OutputDir "create-usb.cs"
+$icoFile = Join-Path $repoRoot "assets\opencode-usb-creator.ico"
+$outFile = Join-Path $OutputDir "create-usb.exe"
+if (-not (Test-Path $icoFile)) {
+    Write-Error "Icon not found: $icoFile"
+    exit 1
+}
+
 # Splash artwork, embedded so a standalone create-usb.exe still shows it
-$splashFile = Join-Path $OutputDir "assets\splash.png"
+$splashFile = Join-Path $repoRoot "assets\splash.png"
 if (-not (Test-Path $splashFile)) {
     Write-Error "Splash image not found: $splashFile"
     exit 1
@@ -122,7 +131,7 @@ if (-not (Test-Path $splashFile)) {
 # Compile launcher.exe if needed
 if (-not (Test-Path $launcherExe)) {
     Write-Host "  Compiling launcher.exe..." -ForegroundColor Yellow
-    & "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe" -target:winexe -out:$launcherExe -win32icon:$icoFile $launcherCs
+    & "C:\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe" -target:winexe "-out:$launcherExe" "-win32icon:$icoFile" $launcherCs
     if ($LASTEXITCODE -ne 0) {
         Write-Error "Launcher compilation failed"
         exit 1
@@ -135,11 +144,11 @@ if (-not (Test-Path $launcherExe)) {
     -reference:System.Windows.Forms.dll `
     -reference:System.IO.Compression.dll `
     -reference:System.IO.Compression.FileSystem.dll `
-    -resource:$zipPath,opencode-source.zip `
-    -resource:$launcherExe,launcher.exe `
-    -resource:$splashFile,splash.png `
-    -out:$outFile `
-    -win32icon:$icoFile `
+    "-resource:$zipPath,opencode-source.zip" `
+    "-resource:$launcherExe,launcher.exe" `
+    "-resource:$splashFile,splash.png" `
+    "-out:$outFile" `
+    "-win32icon:$icoFile" `
     $csFile
 
 if ($LASTEXITCODE -ne 0) {
