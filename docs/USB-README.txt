@@ -1,6 +1,6 @@
 =============================================
   Portable OpenCode AI USB
-  Version 1.18.3
+  Version 1.18.32
 =============================================
 
 SELF-CONTAINED AI CODING ASSISTANT
@@ -23,8 +23,8 @@ HOW TO USE (after setup):
   4. When you exit, your session is saved
 
 WHAT'S INCLUDED:
-  - OpenCode v1.18.3 (terminal AI coding agent)
-  - Node.js v26.5.0 portable runtime
+  - OpenCode v1.18.32 (terminal AI coding agent)
+  - Node.js v24 LTS portable runtime
   - WezTerm portable terminal (GPU-accelerated)
   - Ripgrep (fast file search)
   - API key popup with provider selection
