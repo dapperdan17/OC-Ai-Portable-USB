@@ -1,0 +1,97 @@
+name: Build USB Creator
+
+# Assembles the stick payload from official upstream downloads plus the
+# launcher/config files in payload/, then compiles Ai.Portable.USB.Creator.exe
+# with the .NET Framework csc that ships with Windows. Replaces building from
+# a hand-prepared source USB.
+
+on:
+  push:
+    branches: [main, 'improve/**']
+    tags: ['v*']
+  workflow_dispatch:
+
+env:
+  OPENCODE_VERSION: '1.18.32'
+  NODE_VERSION: '24.21.0'
+  RIPGREP_VERSION: '15.2.0'
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assemble payload
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $ProgressPreference = 'SilentlyContinue'
+          $P  = Join-Path $env:RUNNER_TEMP 'payload'
+          $dl = Join-Path $env:RUNNER_TEMP 'dl'
+          New-Item -ItemType Directory -Force $dl | Out-Null
+
+          function Get-File($url, $out, $sha256) {
+            Invoke-WebRequest $url -OutFile $out
+            if ($sha256) {
+              $actual = (Get-FileHash $out -Algorithm SHA256).Hash
+              if ($actual -ne $sha256.ToUpper()) { throw "Checksum mismatch for $url" }
+            }
+          }
+
+          Copy-Item payload $P -Recurse
+          Copy-Item docs/USB-README.txt (Join-Path $P 'README.txt')
+          # git doesn't track empty dirs; the stick layout expects these
+          foreach ($d in 'data/cache','data/config/agents','data/config/modes','data/config/plugins','data/logs','data/opencode','data/state') {
+            New-Item -ItemType Directory -Force (Join-Path $P $d) | Out-Null
+          }
+
+          # OpenCode - baseline build has no AVX2 requirement, so it runs on older PCs
+          Get-File "https://github.com/anomalyco/opencode/releases/download/v$env:OPENCODE_VERSION/opencode-windows-x64-baseline.zip" "$dl/oc.zip"
+          Expand-Archive "$dl/oc.zip" "$dl/oc"
+          Copy-Item (Get-ChildItem "$dl/oc" -Recurse -Filter opencode.exe | Select-Object -First 1).FullName "$P/bin/opencode.exe"
+
+          # Node.js LTS
+          $node = "node-v$env:NODE_VERSION-win-x64"
+          $sums = (Invoke-WebRequest "https://nodejs.org/dist/v$env:NODE_VERSION/SHASUMS256.txt").Content
+          $nodeSha = ($sums -split "`n" | Where-Object { $_ -match " $node\.zip$" }) -split '\s+' | Select-Object -First 1
+          Get-File "https://nodejs.org/dist/v$env:NODE_VERSION/$node.zip" "$dl/node.zip" $nodeSha
+          Expand-Archive "$dl/node.zip" $dl
+          Move-Item "$dl/$node" "$P/nodejs"
+          Rename-Item "$P/nodejs/install_tools.bat" 'install_tools.bat.DO_NOT_RUN'
+
+          # ripgrep
+          $rg = "ripgrep-$env:RIPGREP_VERSION-x86_64-pc-windows-msvc"
+          $rgBase = "https://github.com/BurntSushi/ripgrep/releases/download/$env:RIPGREP_VERSION"
+          $rgSha = ((Invoke-WebRequest "$rgBase/$rg.zip.sha256").Content -split '\s+')[0]
+          Get-File "$rgBase/$rg.zip" "$dl/rg.zip" $rgSha
+          Expand-Archive "$dl/rg.zip" $dl
+          Copy-Item "$dl/$rg/rg.exe" "$P/bin/rg.exe"
+
+          # WezTerm - upstream only publishes nightly builds now
+          $wzBase = 'https://github.com/wezterm/wezterm/releases/download/nightly'
+          $wzSha = ((Invoke-WebRequest "$wzBase/WezTerm-windows-nightly.zip.sha256").Content -split '\s+')[0]
+          Get-File "$wzBase/WezTerm-windows-nightly.zip" "$dl/wz.zip" $wzSha
+          Expand-Archive "$dl/wz.zip" "$dl/wz"
+          $wzDir = (Get-ChildItem "$dl/wz" -Recurse -Filter wezterm-gui.exe | Select-Object -First 1).Directory.FullName
+          Move-Item $wzDir "$P/wezterm"
+          Get-ChildItem "$P/wezterm" -Recurse -Filter *.pdb | Remove-Item
+
+          & "$P/bin/opencode.exe" --version
+          & "$P/nodejs/node.exe" --version
+          "PAYLOAD=$P" | Out-File $env:GITHUB_ENV -Append
+
+      - name: Compile
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          ./src/build-embedded.ps1 -SourcePath $env:PAYLOAD
+          $ver = if ($env:GITHUB_REF_TYPE -eq 'tag') { $env:GITHUB_REF_NAME } else { "dev-$($env:GITHUB_SHA.Substring(0,7))" }
+          New-Item -ItemType Directory -Force dist | Out-Null
+          Move-Item src/create-usb.exe "dist/Ai.Portable.USB.Creator.$ver.exe"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: usb-creator
+          path: dist/*.exe
+          compression-level: 0
